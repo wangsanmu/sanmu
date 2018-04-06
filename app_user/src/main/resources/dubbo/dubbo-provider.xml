@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${dubbo.application.name}" />
+
+    <!-- 注册中心暴露服务地址 -->
+    <dubbo:registry  protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" />
+
+    <!-- 暴露服务 -->
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
+
+
+    <!-- 基础服务 -->
+    <dubbo:service interface="com.wangsen.user.api.SysUserService" ref="sysUserServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysAppService" ref="sysAppServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysMenuService" ref="sysMenuServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysPermissionService" ref="sysPermissionServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysReUserAppService" ref="sysReUserAppServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysRolePermissionService" ref="sysRolePermissionServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysRoleService" ref="sysRoleServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.wangsen.user.api.SysUserRoleService" ref="sysUserRoleServiceImpl" retries="0" timeout="6000" />
+</beans>
