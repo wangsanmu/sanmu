@@ -15,6 +15,8 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.HashSet;
@@ -58,6 +60,7 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         jedisPoolConfig.setTestOnBorrow(true);
         //在还会给pool时，是否提前进行validate操作
         jedisPoolConfig.setTestOnReturn(true);
+
         return jedisPoolConfig;
     }
 
@@ -113,10 +116,20 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
+        template.setKeySerializer(jackson2JsonRedisSerializer);
         template.setValueSerializer(jackson2JsonRedisSerializer);
+        template.setHashKeySerializer(jackson2JsonRedisSerializer);
+        template.setHashValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
         return template;
     }
+
+    @Bean
+    public RedisTemplate<String,String> template(RedisConnectionFactory jedisConnectionFactory){
+        StringRedisTemplate template = new StringRedisTemplate(jedisConnectionFactory);
+        return template;
+    }
+
 
 
     public String getHost() {
