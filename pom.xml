@@ -9,6 +9,8 @@
 	<modules>
 		<module>app_common</module>
 		<module>app_server</module>
+		<module>app_user</module>
+		<module>app_user_api</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -26,12 +28,22 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<mysql.version>5.1.35</mysql.version>
+		<druid.version>1.0.28</druid.version>
+		<mybatis.plus>2.1.9</mybatis.plus>
+		<mybatisplus.spring.boot.starter>1.0.5</mybatisplus.spring.boot.starter>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
