@@ -1,4 +1,4 @@
-package com.wangsen.app_server;
+package com.wangsen.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
