@@ -40,7 +40,6 @@ public class DruidConfigOrtherConfig {
 
     private int maxPoolPreparedStatementPerConnectionSize;
 
-    private String filters;
 
 
     public DataSource mysqlDataSource(DruidDataSource druidDataSource) throws Exception {
@@ -57,8 +56,6 @@ public class DruidConfigOrtherConfig {
         druidDataSource.setTestOnReturn(this.testOnReturn);
         druidDataSource.setPoolPreparedStatements(this.poolPreparedStatements);
         druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(this.maxPoolPreparedStatementPerConnectionSize);
-        druidDataSource.setFilters(this.filters);
-
         try {
             if (null != druidDataSource) {
                 druidDataSource.setFilters("wall,stat");
@@ -173,13 +170,5 @@ public class DruidConfigOrtherConfig {
 
     public void setMaxPoolPreparedStatementPerConnectionSize(int maxPoolPreparedStatementPerConnectionSize) {
         this.maxPoolPreparedStatementPerConnectionSize = maxPoolPreparedStatementPerConnectionSize;
-    }
-
-    public String getFilters() {
-        return filters;
-    }
-
-    public void setFilters(String filters) {
-        this.filters = filters;
     }
 }
