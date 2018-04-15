@@ -9,8 +9,8 @@ import org.springframework.context.annotation.PropertySource;
  * @data 2018/3/24 9:51
  */
 @Configuration
-@PropertySource("classpath:dubbo/dubbo.properties")
+//@PropertySource("classpath:dubbo/dubbo.properties")
 @PropertySource("classpath:log4j.properties")
-@ImportResource({ "classpath:dubbo/*.xml" })
+//@ImportResource({ "classpath:dubbo/*.xml" })
 public class DubboConfig {
 }
