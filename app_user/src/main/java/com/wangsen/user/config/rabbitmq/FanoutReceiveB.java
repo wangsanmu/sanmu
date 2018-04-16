@@ -1,26 +1,21 @@
 package com.wangsen.user.config.rabbitmq;
 
-import com.wangsen.user.entity.SysUser;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
  * @author wangsen
- * @data 2018/4/15 21:28
+ * @data 2018/4/16 21:55
  */
 @Component
-@RabbitListener(queues = "firstQueue")
-public class MessageConsumer {
+@RabbitListener(queues = "fanout.B")
+public class FanoutReceiveB {
 
     @RabbitHandler
     public void process(String hello) {
-        System.out.println("Receiver : " + hello);
+        System.out.println("FanoutReceiveB : " + hello);
     }
 
-    @RabbitHandler
-    public void process1(SysUser sysUser){
-        System.out.println("Receiver object : " + sysUser);
-    }
 
 }
